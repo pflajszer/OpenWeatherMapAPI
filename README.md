@@ -11,9 +11,9 @@ And the following API versions were tested:
 ## Installation
 
 #### Package Manager:
-`Install-Package OpenWeatherMapAPI`
+`Install-Package OpenWeatherMapAPI.ClientLibrary`
 #### .NET CLI:
-`dotnet add package OpenWeatherMapAPI`
+`dotnet add package OpenWeatherMapAPI.ClientLibrary`
 
 ## Setup
 
