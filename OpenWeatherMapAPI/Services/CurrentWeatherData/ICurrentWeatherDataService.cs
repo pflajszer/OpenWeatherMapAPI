@@ -1,4 +1,5 @@
 ﻿using OpenWeatherMapAPI.Models.CurrentWeatherData;
+using OpenWeatherMapAPI.Models.Shared;
 using System.Threading.Tasks;
 
 namespace OpenWeatherMapAPI.Services.CurrentWeatherData

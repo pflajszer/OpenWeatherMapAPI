@@ -1,8 +1,9 @@
 ﻿using OpenWeatherMapAPI.Models.CurrentWeatherData;
+using OpenWeatherMapAPI.Models.Shared;
 
 namespace OpenWeatherMapAPI.TestResources
 {
-	public static class CurrentWeatherDataSamples
+	public static class Requests
 	{
 		public static ByGeographicCoordinatesRequest ByGeographicCoordinatesRequest_Valid { get; } = new ByGeographicCoordinatesRequest()
 		{

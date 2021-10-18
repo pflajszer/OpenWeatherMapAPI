@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OpenWeatherMapAPI.Models.CurrentWeatherData
+namespace OpenWeatherMapAPI.Models.Shared
 {
 	public  class ByGeographicCoordinatesRequest
 	{
