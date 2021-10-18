@@ -7,6 +7,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Description>A wrapper library for OpenWeatherMap API built in .NET Core 3.1</Description>
     <Authors>Pawel Flajszer</Authors>
+    <PackageId>$(AssemblyName).ClientLibrary</PackageId>
+	<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
