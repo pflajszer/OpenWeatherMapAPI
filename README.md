@@ -4,6 +4,8 @@ A wrapper library for OpenWeatherMap API built in .NET Core 3.1
 Currently, the package supports the following endpoints:
 - Current Weather Data:
 	- By geographic coordinates
+- Air Polution:
+	- - By geographic coordinates
 
 And the following API versions were tested:
 - v2.5
@@ -34,7 +36,7 @@ public class MyClass
 {
 	private readonly IOpenWeatherMapAPIClient _api;
 
-	public EmailManager(IOpenWeatherMapAPIClient api)
+	public MyService(IOpenWeatherMapAPIClient api)
 	{
 		_api = api;
 	}
