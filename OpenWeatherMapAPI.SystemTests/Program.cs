@@ -14,8 +14,8 @@ namespace OpenWeatherMapAPI.SystemTests
 			var sut = new OpenWeatherMapAPIClient(BaseConstants.APIkey);
 			CurrentWeatherDataService_ByGeographicCoordinatesAsync_CanGetResult(sut).Wait();
 			CurrentWeatherDataService_ByGeographicCoordinatesAsync_ThrowsOnWrongInput(sut).Wait();
-			AirPolutionService_ByGeographicCoordinatesAsync_CanGetResult(sut).Wait();
-			AirPolutionService_ByGeographicCoordinatesAsync_ThrowsOnWrongInput(sut).Wait();
+			AirPollutionService_ByGeographicCoordinatesAsync_CanGetResult(sut).Wait();
+			AirPollutionService_ByGeographicCoordinatesAsync_ThrowsOnWrongInput(sut).Wait();
 		}
 
 		#region CurrentWeatherDataService
@@ -65,20 +65,20 @@ namespace OpenWeatherMapAPI.SystemTests
 		}
 		#endregion
 
-		#region AirPolutionService
-		private static async Task AirPolutionService_ByGeographicCoordinatesAsync_CanGetResult(OpenWeatherMapAPIClient client)
+		#region AirPollutionService
+		private static async Task AirPollutionService_ByGeographicCoordinatesAsync_CanGetResult(OpenWeatherMapAPIClient client)
 		{
-			Console.WriteLine($"Running system test: {nameof(AirPolutionService_ByGeographicCoordinatesAsync_CanGetResult)}");
-			var sut = client.AirPolution;
+			Console.WriteLine($"Running system test: {nameof(AirPollutionService_ByGeographicCoordinatesAsync_CanGetResult)}");
+			var sut = client.AirPollution;
 			var result = await sut.ByGeographicCoordinatesAsync(Requests.ByGeographicCoordinatesRequest_Valid);
 			Console.WriteLine(JsonConvert.SerializeObject(result));
 			ReportSuccess();
 		}
 
-		private static async Task AirPolutionService_ByGeographicCoordinatesAsync_ThrowsOnWrongInput(OpenWeatherMapAPIClient client)
+		private static async Task AirPollutionService_ByGeographicCoordinatesAsync_ThrowsOnWrongInput(OpenWeatherMapAPIClient client)
 		{
-			Console.WriteLine($"Running system test: {nameof(AirPolutionService_ByGeographicCoordinatesAsync_ThrowsOnWrongInput)}");
-			var sut = client.AirPolution;
+			Console.WriteLine($"Running system test: {nameof(AirPollutionService_ByGeographicCoordinatesAsync_ThrowsOnWrongInput)}");
+			var sut = client.AirPollution;
 			try
 			{
 				var result = await sut.ByGeographicCoordinatesAsync(Requests.ByGeographicCoordinatesRequest_Invalid);

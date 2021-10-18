@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenWeatherMapAPI.Models.AirPolution
+namespace OpenWeatherMapAPI.Models.AirPollution
 {
 
-    public class AirPolutionResponse
+    public class AirPollutionResponse
     {
         public Coord coord { get; set; }
 
         [JsonProperty("list")]
-        public List<PolutionLevelList> list { get; set; }
+        public List<PollutionLevelList> list { get; set; }
     }
 
 
@@ -40,7 +40,7 @@ namespace OpenWeatherMapAPI.Models.AirPolution
         public double nh3 { get; set; }
     }
 
-    public class PolutionLevelList
+    public class PollutionLevelList
     {
         public Main main { get; set; }
         public Components components { get; set; }

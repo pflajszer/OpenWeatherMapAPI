@@ -1,5 +1,5 @@
 ﻿using Flurl.Http;
-using OpenWeatherMapAPI.Services.AirPolution;
+using OpenWeatherMapAPI.Services.AirPollution;
 using OpenWeatherMapAPI.TestResources;
 using System;
 using System.Collections.Generic;
@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace OpenWeatherMapAPI.IntegrationTests.Services.AirPolution
+namespace OpenWeatherMapAPI.IntegrationTests.Services.AirPollution
 {
-    public class AirPolutionService_IntegrationTests
+    public class AirPollutionService_IntegrationTests
     {
 
-		private readonly IAirPolutionService _sut;
-		public AirPolutionService_IntegrationTests()
+		private readonly IAirPollutionService _sut;
+		public AirPollutionService_IntegrationTests()
 		{
 
-			_sut = new AirPolutionService(BaseConstants.APIkey);
+			_sut = new AirPollutionService(BaseConstants.APIkey);
 		}
 
 

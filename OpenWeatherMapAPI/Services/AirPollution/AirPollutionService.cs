@@ -1,4 +1,4 @@
-﻿using OpenWeatherMapAPI.Models.AirPolution;
+﻿using OpenWeatherMapAPI.Models.AirPollution;
 using OpenWeatherMapAPI.Models.Shared;
 using OpenWeatherMapAPI.Services.Shared;
 using System;
@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenWeatherMapAPI.Services.AirPolution
+namespace OpenWeatherMapAPI.Services.AirPollution
 {
-	public class AirPolutionService : APIGateway, IAirPolutionService
+	public class AirPollutionService : APIGateway, IAirPollutionService
 	{
 		/// <summary>
 		/// API key. More at: https://openweathermap.org/appid
@@ -17,15 +17,15 @@ namespace OpenWeatherMapAPI.Services.AirPolution
 		private readonly string _apiKey;
 
 
-		public AirPolutionService(string apiKey, string apiUrl = Constants.APIUrl_Ver2_5)
-			: base(apiUrl, Constants.Endpoint_AirPolution)
+		public AirPollutionService(string apiKey, string apiUrl = Constants.APIUrl_Ver2_5)
+			: base(apiUrl, Constants.Endpoint_AirPollution)
 		{
 			_apiKey = apiKey;
 		}
 
-		public async Task<AirPolutionResponse> ByGeographicCoordinatesAsync(ByGeographicCoordinatesRequest request)
+		public async Task<AirPollutionResponse> ByGeographicCoordinatesAsync(ByGeographicCoordinatesRequest request)
 		{
-			var res = await ExecuteGetAsync<AirPolutionResponse>(new
+			var res = await ExecuteGetAsync<AirPollutionResponse>(new
 			{
 				lat = request.Latitude,
 				lon = request.Longitude,
