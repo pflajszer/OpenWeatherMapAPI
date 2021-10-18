@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/pflajszer/OpenWeatherMapAPI</RepositoryUrl>
+    <Company>Pawel Flajszer</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>A wrapper library for OpenWeatherMap API built in .NET Core 3.1</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flurl.Http" Version="3.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<None Include="..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+</Project>
