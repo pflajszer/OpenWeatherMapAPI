@@ -66,6 +66,10 @@ var result = await currentWeather.ByGeographicCoordinatesAsync(request);
 // {"coord":{"lon":1.5584,"lat":53.7998},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}],"base":"stations","main":{"temp":286.48,"feels_like":286.11,"temp_min":286.48,"temp_max":286.48,"pressure":1015,"humidity":86},"visibility":10000,"wind":{"speed":9.68,"deg":180},"clouds":{"all":100},"dt":1634563421,"sys":{"type":2,"id":2029944,"country":"GB","sunrise":1634538410,"sunset":1634575838},"timezone":0,"id":2650519,"name":"Easington","cod":200}
 
 ```
+## Testing
+
+Some Integration and System tests are available in the repo, but make sure you update the `OpenWeatherMapAPI.TestResources.BaseConstants.APIkey` constant.
+
 
 ## Development
 
