@@ -19,13 +19,18 @@ And the following API versions were tested:
 
 ## Setup
 
-When using dependency injection in .NET Core 3.X, you can register type like so, by registering a type in the ```ConfigureServices()``` method:
+When using dependency injection in .NET Core 3.X, you can register type like so, by registering a type in the ```ConfigureServices()``` method. Outside of the DI registration, the `OpenWeatherMapAPIClientConfiguration.APIKey` is required, and the rest of the config is optional and has default values:
 
 Startup.cs:
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-	services.AddScoped<IOpenWeatherMapAPIClient>(provider => new OpenWeatherMapAPIClient("MY_API_KEY"));
+	OpenWeatherMapAPIClientConfiguration.APIKey = "MY_API_KEY"
+	OpenWeatherMapAPIClientConfiguration.APIURL = "API_URL_TO_USE" // OPTIONAL
+	OpenWeatherMapAPIClientConfiguration.APIVersion = "API_VERSION_TO_USE" // OPTIONAL
+
+
+	services.AddScoped<IOpenWeatherMapAPIClient, OpenWeatherMapAPIClient>();
 }
 ```
 
@@ -43,9 +48,9 @@ public class MyClass
 }
 ```
 
-Alternatively, you don't have to inject/instantiate the whole API client and only choose services that you need, by injecting i.e. `ICurrentWeatherDataService` - each service should take the same parameters as the `IOpenWeatherMapAPIClient` constructor. If you use `IOpenWeatherMapAPIClient`, all the constructed services will use the same API version you provide in the main constructor.
+Alternatively, you don't have to inject/instantiate the whole API client and only choose services that you need, by injecting i.e. `ICurrentWeatherDataService`.
 
-You can control which version of OpenWeatherMap API you're using by providing an optional `APIUrl` parameter to your constructors and using `OpenWeatherMapAPI.Models.Shared.Constants` class (i.e. `Constants.APIUrl_Ver2_5`), or provide the version yourself.
+You can control which version of OpenWeatherMap API you're using by providing an optional `OpenWeatherMapAPIClientConfiguration.APIVersion` parameter to your global `Startup` config and using `OpenWeatherMapAPI.Models.Shared.Constants` class (i.e. `Constants.Ver2_5`), or provide the version yourself. You can do the same with the API URL by providing a `OpenWeatherMapAPIClientConfiguration.APIVersion` in your config. Similarly, this is optional as the default value is provided automatically.
 
 ## Usage
 
@@ -54,7 +59,8 @@ The example project that uses the below code can be found under `OpenWeatherMapA
 Quickstart:
 
 ```csharp
-var apiClient = new OpenWeatherMapAPIClient("MY_API_KEY");
+OpenWeatherMapAPIClientConfiguration.APIKey = "MY_API_KEY"
+var apiClient = new OpenWeatherMapAPIClient();
 var currentWeather = apiClient.CurrentWeatherData;
 
 var request = new ByGeographicCoordinatesRequest()
@@ -78,10 +84,7 @@ Some Integration and System tests are available in the repo, but make sure you u
 In order to add a new service to the library, you'll need to:
 - Add a new endpoint constant in `OpenWeatherMapAPI.Models.Shared.Constants`
 - Add a new folder under `OpenWeatherMapAPI.Models` with your new service name. In that folder, add a POCO response class
-- For each method you're adding, also add a request class in the above namespace
+- For each method you're adding, also add a request class in the above namespace (if not existing yet)
 - Add a folder under `OpenWeatherMapAPI.Services` with the new service you're adding and add a concrete class and an abstract interface. Derive your class from `APIGateway` class. Don't call the API yourself - use your service to construct the request object you need to pass on and use the `ExecuteGetAsync<T>` method to do the calling for you
 - Add your new interface to the `OpenWeatherMapAPIClient` and `IOpenWeatherMapAPIClient` as a property
 - Following the existing structure, add any sample requests/responses to `OpenWeatherMapAPI.TestResources` project, add integration tests in `OpenWeatherMapAPI.IntegrationTests` project and a logic for system tests in `OpenWeatherMapAPI.SystemTests`
-
-##### Thanks for reading and feel free to reach out!
-##### Pav
