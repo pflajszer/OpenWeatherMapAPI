@@ -30,8 +30,8 @@ namespace OpenWeatherMapAPI.Models.AirPollution
 
     public class Components
     {
-        public int co { get; set; }
-        public int no { get; set; }
+        public double co { get; set; }
+        public double no { get; set; }
         public double no2 { get; set; }
         public double o3 { get; set; }
         public double so2 { get; set; }

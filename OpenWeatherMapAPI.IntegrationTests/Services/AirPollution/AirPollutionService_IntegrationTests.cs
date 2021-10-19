@@ -1,4 +1,5 @@
 ﻿using Flurl.Http;
+using OpenWeatherMapAPI.Models.Shared;
 using OpenWeatherMapAPI.Services.AirPollution;
 using OpenWeatherMapAPI.TestResources;
 using System;
@@ -17,7 +18,8 @@ namespace OpenWeatherMapAPI.IntegrationTests.Services.AirPollution
 		public AirPollutionService_IntegrationTests()
 		{
 
-			_sut = new AirPollutionService(BaseConstants.APIkey);
+			_sut = new AirPollutionService();
+			OpenWeatherMapAPIClientConfiguration.APIKey = BaseConstants.APIkey;
 		}
 
 
