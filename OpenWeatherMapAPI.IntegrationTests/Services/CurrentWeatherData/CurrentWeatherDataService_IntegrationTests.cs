@@ -1,4 +1,5 @@
 ﻿using Flurl.Http;
+using OpenWeatherMapAPI.Models.Shared;
 using OpenWeatherMapAPI.Services.CurrentWeatherData;
 using OpenWeatherMapAPI.TestResources;
 using Xunit;
@@ -11,7 +12,8 @@ namespace OpenWeatherMapAPI.IntegrationTests.Services.CurrentWeatherData
 		private readonly CurrentWeatherDataService _sut;
 		public CurrentWeatherDataService_IntegrationTests()
 		{
-			_sut = new CurrentWeatherDataService(BaseConstants.APIkey);
+			_sut = new CurrentWeatherDataService();
+			OpenWeatherMapAPIClientConfiguration.APIKey = BaseConstants.APIkey;
 		}
 
 		[Fact]

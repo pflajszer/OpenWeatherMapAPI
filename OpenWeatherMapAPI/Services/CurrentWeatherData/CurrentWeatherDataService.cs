@@ -10,16 +10,9 @@ namespace OpenWeatherMapAPI.Services.CurrentWeatherData
 {
 	public class CurrentWeatherDataService : APIGateway, ICurrentWeatherDataService
 	{
-		/// <summary>
-		/// API key. More at: https://openweathermap.org/appid
-		/// </summary>
-		private readonly string _apiKey;
-
-
-		public CurrentWeatherDataService(string apiKey, string apiUrl = Constants.APIUrl_Ver2_5)
-			: base(apiUrl, Constants.Endpoint_CurrentWeatherData)
+		public CurrentWeatherDataService()
+			: base(Constants.Endpoint_CurrentWeatherData)
 		{
-			_apiKey = apiKey;
 		}
 
 		public async Task<CurrentWeatherDataResponse> ByGeographicCoordinatesAsync(ByGeographicCoordinatesRequest request)
@@ -28,7 +21,7 @@ namespace OpenWeatherMapAPI.Services.CurrentWeatherData
 			{
 				lat = request.Latitude,
 				lon = request.Longitude,
-				appid = _apiKey
+				appid = OpenWeatherMapAPIClientConfiguration.APIKey
 			});
 			return res;
 		}

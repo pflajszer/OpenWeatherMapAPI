@@ -6,10 +6,10 @@ namespace OpenWeatherMapAPI.APIClient
 {
 	public class OpenWeatherMapAPIClient : IOpenWeatherMapAPIClient
 	{
-		public OpenWeatherMapAPIClient(string apiKey, string APIUrl = Constants.APIUrl_Ver2_5)
+		public OpenWeatherMapAPIClient()
 		{
-			CurrentWeatherData = new CurrentWeatherDataService(apiKey, APIUrl);
-			AirPollution = new AirPollutionService(apiKey, APIUrl);
+			CurrentWeatherData = new CurrentWeatherDataService();
+			AirPollution = new AirPollutionService();
 		}
 
 		public ICurrentWeatherDataService CurrentWeatherData { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Flurl.Http;
 using Newtonsoft.Json;
 using OpenWeatherMapAPI.APIClient;
+using OpenWeatherMapAPI.Models.Shared;
 using OpenWeatherMapAPI.TestResources;
 using System;
 using System.Threading.Tasks;
@@ -11,7 +12,10 @@ namespace OpenWeatherMapAPI.SystemTests
 	{
 		static void Main(string[] args)
 		{
-			var sut = new OpenWeatherMapAPIClient(BaseConstants.APIkey);
+			var sut = new OpenWeatherMapAPIClient();
+
+			OpenWeatherMapAPIClientConfiguration.APIKey = BaseConstants.APIkey;
+
 			CurrentWeatherDataService_ByGeographicCoordinatesAsync_CanGetResult(sut).Wait();
 			CurrentWeatherDataService_ByGeographicCoordinatesAsync_ThrowsOnWrongInput(sut).Wait();
 			AirPollutionService_ByGeographicCoordinatesAsync_CanGetResult(sut).Wait();

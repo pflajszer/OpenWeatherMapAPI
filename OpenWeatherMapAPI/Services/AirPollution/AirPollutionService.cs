@@ -11,16 +11,9 @@ namespace OpenWeatherMapAPI.Services.AirPollution
 {
 	public class AirPollutionService : APIGateway, IAirPollutionService
 	{
-		/// <summary>
-		/// API key. More at: https://openweathermap.org/appid
-		/// </summary>
-		private readonly string _apiKey;
-
-
-		public AirPollutionService(string apiKey, string apiUrl = Constants.APIUrl_Ver2_5)
-			: base(apiUrl, Constants.Endpoint_AirPollution)
+		public AirPollutionService()
+			: base(Constants.Endpoint_AirPollution)
 		{
-			_apiKey = apiKey;
 		}
 
 		public async Task<AirPollutionResponse> ByGeographicCoordinatesAsync(ByGeographicCoordinatesRequest request)
@@ -29,7 +22,7 @@ namespace OpenWeatherMapAPI.Services.AirPollution
 			{
 				lat = request.Latitude,
 				lon = request.Longitude,
-				appid = _apiKey
+				appid = OpenWeatherMapAPIClientConfiguration.APIKey
 			});
 			return res;
 		}
