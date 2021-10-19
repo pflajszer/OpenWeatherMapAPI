@@ -5,7 +5,7 @@ Currently, the package supports the following endpoints:
 - Current Weather Data:
 	- By geographic coordinates
 - Air Pollution:
-	- - By geographic coordinates
+	- By geographic coordinates
 
 And the following API versions were tested:
 - v2.5
