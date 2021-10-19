@@ -16,7 +16,7 @@ namespace OpenWeatherMapAPI.IntegrationTests.APIClient
 		public async void CanCallAny_CurrentWeatherDataService_Method()
 		{
 			// Arrange:
-			var req = CurrentWeatherDataSamples.ByGeographicCoordinatesRequest_Valid;
+			var req = Requests.ByGeographicCoordinatesRequest_Valid;
 
 			// Act:
 			var res = await _sut.CurrentWeatherData.ByGeographicCoordinatesAsync(req);

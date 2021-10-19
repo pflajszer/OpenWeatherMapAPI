@@ -1,18 +1,25 @@
 ﻿using Flurl.Http;
-using OpenWeatherMapAPI.Services.CurrentWeatherData;
+using OpenWeatherMapAPI.Services.AirPollution;
 using OpenWeatherMapAPI.TestResources;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
-namespace OpenWeatherMapAPI.IntegrationTests.Services.CurrentWeatherData
+namespace OpenWeatherMapAPI.IntegrationTests.Services.AirPollution
 {
-	public class CurrentWeatherDataService_IntegrationTests
-	{
+    public class AirPollutionService_IntegrationTests
+    {
 
-		private readonly CurrentWeatherDataService _sut;
-		public CurrentWeatherDataService_IntegrationTests()
+		private readonly IAirPollutionService _sut;
+		public AirPollutionService_IntegrationTests()
 		{
-			_sut = new CurrentWeatherDataService(BaseConstants.APIkey);
+
+			_sut = new AirPollutionService(BaseConstants.APIkey);
 		}
+
 
 		[Fact]
 		public async void ByGeographicCoordinatesAsync_CanGetResult()
@@ -36,6 +43,5 @@ namespace OpenWeatherMapAPI.IntegrationTests.Services.CurrentWeatherData
 			// Act/Assert:
 			await Assert.ThrowsAnyAsync<FlurlHttpException>(() => _sut.ByGeographicCoordinatesAsync(req));
 		}
-
 	}
 }
