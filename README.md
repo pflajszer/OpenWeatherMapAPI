@@ -88,3 +88,16 @@ In order to add a new service to the library, you'll need to:
 - Add a folder under `OpenWeatherMapAPI.Services` with the new service you're adding and add a concrete class and an abstract interface. Derive your class from `APIGateway` class. Don't call the API yourself - use your service to construct the request object you need to pass on and use the `ExecuteGetAsync<T>` method to do the calling for you
 - Add your new interface to the `OpenWeatherMapAPIClient` and `IOpenWeatherMapAPIClient` as a property
 - Following the existing structure, add any sample requests/responses to `OpenWeatherMapAPI.TestResources` project, add integration tests in `OpenWeatherMapAPI.IntegrationTests` project and a logic for system tests in `OpenWeatherMapAPI.SystemTests`
+
+## Deployment
+
+Use tags for versioning. Check the current iteration (tag) and in cmd:
+
+```git
+git checkout [test/master]
+git pull
+git tag v[Major].[Minor].[Patch]-[beta if test branch]
+git push origin [version]
+```
+
+Then, push the code to test and merge into master.
