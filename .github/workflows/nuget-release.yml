@@ -25,4 +25,4 @@ jobs:
     - name: Pack
       run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
     - name: Nuget Push
-      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\*.nupkg --api-key ${{secrets.NUGET_API_KEY}} -s ${{ env.NUGET_SOURCE_URL }}
+      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} -s ${{ env.NUGET_SOURCE_URL }}
