@@ -17,7 +17,7 @@ And the following API versions were tested:
 #### .NET CLI:
 `dotnet add package OpenWeatherMapAPI.ClientLibrary`
 
-## Setup
+## Setup 
 
 When using dependency injection in .NET Core 3.X, you can register type like so, by registering a type in the ```ConfigureServices()``` method. Outside of the DI registration, the `OpenWeatherMapAPIClientConfiguration.APIKey` is required, and the rest of the config is optional and has default values:
 
